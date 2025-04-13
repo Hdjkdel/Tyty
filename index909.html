@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRP Selection</title>
+  <style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  background-image: url('6.png'); /* Buraya dosya yolunu ekledim */
+  background-size: cover; /* Resmi ekranı kaplayacak şekilde ayarlar */
+  background-repeat: no-repeat; /* Resmin tekrarlamasını engeller */
+  margin: 0;
+  padding: 20px;
+}
+
+.option-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px;
+  margin-bottom: 10px;
+  background-color: #ffffff;
+  border: 2px solid #ddd;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, border 0.3s;
+}
+
+.option-box:hover {
+  background-color: #f9f9f9;
+  border: 2px solid red;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.text-content {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.currency {
+  font-size: 16px;
+  color: #888;
+  margin-left: 5px;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ddd;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+
+.circle.selected {
+  background-color: red;
+  border-color: red;
+}
+
+.my-button:focus {
+  outline: none;
+}
+
+/* Kırmızı detaylı buton */
+.withdraw-btn {  
+    padding: 25px 170px;
+    font-size: 1.2rem;
+    background: linear-gradient(180deg, #FFFFFF, #FF0000); /* Beyazdan kırmızıya geçiş */
+    border: 2px solid #8B0000; /* Koyu kırmızı sınır */
+    color: #4a3626;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 0 20px #FFFFFF; /* Beyaz gölge */
+    width: 70%;
+    max-width: 250px;
+}
+
+.withdraw-btn:hover {  
+    background: #FF0000; /* Kırmızı */
+    color: white;
+    box-shadow: 0 0 25px #FFFFFF; /* Beyaz gölge */
+    transform: scale(1.1);
+}
+
+.withdraw-btn:active {  
+    transform: scale(1);  
+    background-color: #572bd1;  
+    box-shadow: 0 4px 8px #FF0000; /* Kırmızı ışık efekti */
+}  
+
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 60px;
+  z-index: 1000;
+  padding: 0;
+  margin: 0;
+}
+
+.bottom-bar button {
+  background: none;
+  border: none;
+  color: #8c8c8c;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.bottom-bar button.active {
+  color: #000;
+}
+
+.bottom-bar button img {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 5px;
+}
+
+.bottom-bar button:focus {
+  outline: none;
+}
+
+.fixed-footer {  
+    position: fixed;  
+    bottom: 0;  
+    left: 0;  
+    right: 0;  
+    height: 50px;  
+    background: #000;  
+    display: flex;  
+    justify-content: space-around;  
+    align-items: center;  
+    border-top: 2px solid #FFFFFF;  
+    z-index: 1000;  
+}  
+  
+.icon-btn {  
+    background: none;  
+    border: none;  
+    cursor: pointer;  
+    width: 60px;  
+    height: 60px;  
+    display: flex;  
+    justify-content: center;  
+    align-items: center;  
+    border-radius: 8px;  
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;  
+    position: relative;  
+    overflow: hidden;  
+}  
+  
+.icon-btn:hover {  
+    background-color: red;  
+    box-shadow: 0 0 12px red, 0 0 20px red;  
+    transform: scale(1.1);  
+    animation: pulse 0.8s infinite;  
+}  
+
+.icon-btn img {  
+    width: 30px;  
+    height: 30px;  
+    filter: drop-shadow(0 0 10px #fff);  
+    transition: filter 0.3s ease, transform 0.3s ease;  
+}  
+
+.icon-btn:hover img {  
+    filter: drop-shadow(0 0 10px red) brightness(1.2);  
+    transform: translateY(-2px);  
+}  
+  
+.icon-btn:active::after {  
+    content: '';  
+    position: absolute;  
+    width: 100px;  
+    height: 100px;  
+    background: rgba(255, 0, 0, 0.5);  
+    border-radius: 50%;  
+    transform: scale(0);  
+    animation: ripple 0.6s linear;  
+    z-index: 0;  
+}  
+  
+@keyframes pulse {  
+    0% {  
+        box-shadow: 0 0 5px red;  
+    }  
+    50% {  
+        box-shadow: 0 0 20px red;  
+    }  
+    100% {  
+        box-shadow: 0 0 5px red;  
+    }  
+}  
+  
+@keyframes ripple {  
+    to {  
+        transform: scale(2);  
+        opacity: 0;  
+    }  
+}
+      
+  </style>
+<link rel="me" href="https://www.blogger.com/profile/01193733866662496333" />
+<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
+<meta name='google-adsense-platform-domain' content='blogspot.com'/>
+</head>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const lazyImages = document.querySelectorAll("img[data-src]");
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.removeAttribute("data-src");
+                    observer.unobserve(img);
+                }
+            });
+        });
+        lazyImages.forEach(image => imageObserver.observe(image));
+    });
+</script>
+  <script>
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+    document.addEventListener('selectstart', function(e) {
+        e.preventDefault();
+    });
+    document.addEventListener('copy', function(e) {
+        e.preventDefault();
+        alert('');
+    });
+</script>
+<body>
+  <h3>Blockchains CRYPTO APP 3.0</h3>
+  
+  
+  <!-- Bitcoin -->
+  <div class="option-box" onclick="toggleOption(this)">
+    <div class="icon" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg');"></div>
+    <div class="text-content">
+      <span class="main-text">Bitcoin <span class="currency">BTC</span></span>
+    </div>
+    <div class="circle"></div>
+  </div>
+  <!-- Ethereum -->
+  <div class="option-box" onclick="toggleOption(this)">
+    <div class="icon" style="background-image: url('https://w7.pngwing.com/pngs/268/1013/png-transparent-ethereum-eth-hd-logo-thumbnail.png');"></div>
+    <div class="text-content">
+      <span class="main-text">Ethereum <span class="currency">ETH</span></span>
+    </div>
+    <div class="circle"></div>
+  </div>
+  <!-- Binance Coin -->
+  <div class="option-box" onclick="toggleOption(this)">
+    <div class="icon" style="background-image: url('https://seeklogo.com/images/B/binance-coin-bnb-logo-CD94CC6D31-seeklogo.com.png');"></div>
+    <div class="text-content">
+      <span class="main-text">Binance Coin <span class="currency">BNB</span></span>
+    </div>
+    <div class="circle"></div>
+  </div>
+  <!-- Tether -->
+  <div class="option-box" onclick="toggleOption(this)">
+    <div class="icon" style="background-image: url('https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/KTF6M73FKBACNI5JQ4S3EW7MRI.png');"></div>
+    <div class="text-content">
+      <span class="main-text">Tether USD <span class="currency">USDT</span></span>
+    </div>
+    <div class="circle"></div>
+  </div>
+  <!-- Solana -->
+  <div class="option-box" onclick="toggleOption(this)">
+    <div class="icon" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/b/b9/Solana_logo.png');"></div>
+    <div class="text-content">
+      <span class="main-text">Solana <span class="currency">SOL</span></span>
+    </div>
+    <div class="circle"></div>
+  </div>
+  <!-- Litecoin -->
+  <div class="option-box" onclick="toggleOption(this)">
+    <div class="icon" style="background-image: url('https://altcoinsbox.com/wp-content/uploads/2022/12/litecoin-logo-300x300.webp');"></div>
+    <div class="text-content">
+      <span class="main-text">Litecoin <span class="currency">LTC</span></span>
+    </div>
+    <div class="circle"></div>
+  </div>
+<!-- Coming Blockchains -->
+  <h3>Coming Blockchains</h3>
+  <!-- Tron -->
+  <div class="option-box" onclick="selectOption(this)">
+    <div class="icon" style="background-image: url('https://totalcoin.io/uploads/coins/big/trx.png');"></div>
+    <div class="text-content">
+      <span class="main-text">Tron <span class="currency">TRX</span></span>
+    </div>
+    
+  </div>
+  
+  </div>
+  <br>
+    
+    
+  <!-- Coming Blockchains end -->
+  
+  <!-- Continue Button -->
+  <button class="withdraw-btn" onclick="window.open('index000.html', '_self', 'rel=noopener');"></button>
+   
+  
+  <!-- Sabit alt çerçeve -->
+    <div class="fixed-footer">
+        <button class="icon-btn" onclick="window.location.href='index909.html'">
+            <img src="https://cdn3.iconfinder.com/data/icons/feather-5/24/search-512.png" alt="BTC">
+        </button>
+        <button class="icon-btn" onclick="window.location.href='index5.html'">
+            <img src="https://www2.0zz0.com/2024/12/09/17/170890998.png" alt="ETH">
+        </button>
+        <button class="icon-btn" onclick="window.location.href='indexsport.html'">
+            <img src="https://static-00.iconduck.com/assets.00/settings-icon-512x512-0vw3h4zo.png" alt="TRX">
+        </button>
+</div>
+  <script>
+    function toggleOption(element) {
+      const circle = element.querySelector('.circle');
+      circle.classList.toggle('selected');
+    }
+  </script>
+  
+</body>
+</html>

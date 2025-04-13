@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Playwrite+MX+Guides&display=swap");
+
+body { font-family: 'Roboto', Arial, sans-serif; margin: 0; padding: 0; height: 90vh; background: url('5.png') no-repeat center center/cover; /* Gece çölü */ background-attachment: fixed; display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 20px; }
+
+.header { display: flex; align-items: center; font-size: 20px; margin-bottom: 20px; align-self: flex-start; color: #FF0000; /* Kum sarısı */ }
+
+.header .app-name { font-weight: bold; }
+
+.header .version { font-size: 14px; color: #FF0000; /* Turuncu */ margin-left: 10px; }
+
+.image { display: flex; justify-content: center; align-items: center; margin: auto; }
+
+.logo { width: 260px; height: 260px; border-radius: 50%; object-fit: cover; border: 5px solid #FF000; /* Altın sarısı */ box-shadow: 0px 4px 8px rgba(255, 215, 0, 0.5); animation: fadeIn 1s ease-in-out; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.form-section { text-align: left; width: 93%; max-width: 400px; align-self: flex-start; }
+
+.form-section .title { font-size: 18px; font-weight: bold; color: #FF0000; /* Kum sarısı */ margin-bottom: 10px;     border-bottom: 2px solid red; /* Kırmızı çerçeve ekledim */ }
+
+.form-section .subtitle { font-size: 16px; color: #FF0000; /* Turuncu */ margin-bottom: 10px; }
+
+.form-section input[type="password"] { width: 100%; padding: 15px; border: 1px solid #FF0000; border-radius: 12px; font-size: 16px; margin-bottom: 20px; background-color: #3E2723; /* Koyu kahverengi */ color: white; }
+
+.form-section input[type="password"]:focus { outline: none; border-color: #FF0000; /* Altın sarısı */ }
+
+.btn { display: flex; justify-content: center; gap: 30px; padding: 20px; background: #111; border-top: 1px solid #333; } .btn { background: linear-gradient(45deg, red, yellow); border: none; padding: 12px 130px; border-radius: 30px; color: #fff; font-size: 18px; font-weight: bold; cursor: pointer; box-shadow: 0 0 10px red; transition: 0.3s; letter-spacing: 1px; position: relative; overflow: hidden; } .btn::after { content: ''; position: absolute; top: 0; left: -75%; width: 50%; height: 100%; background: rgba(255,255,255,0.3); transform: skewX(-20deg); animation: shine 2s infinite; } @keyframes shine { 0% { left: -75%; } 50% { left: 125%; } 100% { left: 125%; } } .btn:hover { transform: scale(1.05); box-shadow: 0 0 20px yellow; }
+
+

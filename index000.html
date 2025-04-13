@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="wght@400;500;700&display=swap;https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <title>WLTSearch</title>
+  <style>
+  /* Body */
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url('6.png') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  overflow: hidden;
+}
+
+/* Container */
+.container {
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  text-align: left;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  margin-left: 65px;
+  margin-right: 10px;
+  background: linear-gradient(90deg, #ff0000, #ff7300, #ff0000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glow 2s infinite alternate;
+  text-shadow: 0 0 10px #ff0000, 0 0 20px #ff7300, 0 0 30px #ff0000;
+      border-bottom: 2px solid red; /* Kırmızı çerçeve ekledim */
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px #ff0000, 0 0 10px #ff7300, 0 0 15px #ff0000;
+  }
+  100% {
+    text-shadow: 0 0 20px #ff0000, 0 0 30px #ff7300, 0 0 40px #ff0000;
+  }
+}
+
+/* Box */
+.box {
+  height: 300px;
+  overflow-y: auto;
+  border-radius: 12px;
+  padding: 10px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.4);
+  text-align: left;
+  color: white;
+}
+
+/* Last Founded */
+.last-founded {
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+/* Wallet Info */
+.wallet-info-box {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 10px 15px;
+  width: fit-content;
+  margin: 10px auto;
+}
+
+.btc-icon {
+  width: 30px;
+  height: 30px;
+}
+/* burası */
+.wallet-amount {
+  display: flex;
+  flex-direction: column;
+   /* Elemanlar arasındaki boşluğu dengeler */
+  margin-left: 1px;
+  margin-right: 1px; /* Sağ taraf boşluğunu ayarlamak için */
+}
+
+.btc-text {
+  font-weight: bold;
+  margin-left: 1px;
+  margin-right: 100px;
+}
+
+.usd-text {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-left: 1px;
+  margin-right: 100px;
+}
+
+/* Stats Box */
+.stats-box {
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 32px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Buttons */
+.btn {
+  background: linear-gradient(45deg, red, yellow);
+  border: none;
+  padding: 15px 30px;
+  border-radius: 30px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 10px red;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* Fixed Footer */
+.fixed-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: #000;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 2px solid #FFFFFF;
+  z-index: 1000;
+}
+
+/* Icon Buttons */
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.icon-btn img {
+  width: 30px;
+  height: 30px;
+}
+
+.icon-btn:hover {
+  background-color: #000;
+  box-shadow: 0 0 8px red;
+}
+  </style>
+<link rel="me" href="https://www.blogger.com/profile/01193733866662496333" />
+<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
+<meta name='google-adsense-platform-domain' content='blogspot.com'/>
+</head>
+  
+   <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const lazyImages = document.querySelectorAll("img[data-src]");
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.removeAttribute("data-src");
+                    observer.unobserve(img);
+                }
+            });
+        });
+        lazyImages.forEach(image => imageObserver.observe(image));
+    });
+</script>
+  <script>
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+    document.addEventListener('selectstart', function(e) {
+        e.preventDefault();
+    });
+    document.addEventListener('copy', function(e) {
+        e.preventDefault();
+        alert('عذراً، النسخ غير مسموح!');
+    });
+</script>
+<body>
+  
+   <div class="container">
+    <div class="title">CRYPTO APP 3.0</div>
+    <div class="box" id="output"></div>
+
+    <div class="last-founded">
+      <div class="small-text">Last founded</div>
+      <div class="wallet-info-box">
+    <br>
+    <br>
+        <div class="wallet-amount">
+              <br>
+    <br>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-box">
+      <div class="small-text">
+        Wallets checked: <span id="checked">0</span>
+      </div>
+      <div class="large-text" style="margin-top: 8px;">
+        Found: $0
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="start" class="btn">START</button>
+      <button id="stop" class="btn">STOP</button>
+    </div>
+    <br>
+      <br>
+        <br>
+ 
+
+  <script>
+let running = false;
+let checked = 0;
+
+const seedWords = [
+  "apple", "banana", "cherry", "dog", "elephant", "flower", "guitar", "house", "ice", "jungle",
+  "kangaroo", "lemon", "monkey", "notebook", "ocean", "pencil", "queen", "rocket", "sun", "tree",
+  "umbrella", "violin", "whale", "xylophone", "yoga", "zebra", "moon", "river", "cloud", "earth"
+];
+
+// 12 kelimelik seed phrase oluştur
+function generateSeedPhrase() {
+  let seedPhrase = [];
+  for (let i = 0; i < 4; i++) {
+    const randomWord = seedWords[Math.floor(Math.random() * seedWords.length)];
+    seedPhrase.push(randomWord);
+  }
+  return seedPhrase.join(" ");
+}
+
+function addMessage() {
+  if (!running) return;
+
+  const seedPhrase = generateSeedPhrase();
+  const message = `Wallet check: ${seedPhrase}`;
+  
+  const div = document.createElement('div');
+  div.textContent = message;
+  document.getElementById('output').appendChild(div);
+  document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight;
+
+  checked++;
+  document.getElementById('checked').textContent = checked;
+  
+  setTimeout(addMessage, 50); // Mesaj ekleme hızını kontrol et
+}
+
+document.getElementById('start').onclick = function() {
+  running = true;
+  addMessage();
+};
+
+document.getElementById('stop').onclick = function() {
+  running = false;
+};
+  </script>
+  <!-- Sabit alt çerçeve -->
+    <div class="fixed-footer">
+        <button class="icon-btn" onclick="window.location.href='index909.html'">
+            <img src="https://cdn3.iconfinder.com/data/icons/feather-5/24/search-512.png" alt="BTC">
+        </button>
+        <button class="icon-btn" onclick="window.location.href='index5.html'">
+            <img src="https://www2.0zz0.com/2024/12/09/17/170890998.png" alt="ETH">
+        </button>
+        <button class="icon-btn" onclick="window.location.href='indexsport.html'">
+            <img src="https://static-00.iconduck.com/assets.00/settings-icon-512x512-0vw3h4zo.png" alt="TRX">
+        </button>
+</div>
+</body>
+</html>

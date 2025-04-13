@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ff.css">
+    <title>Blockchain Statistics</title>
+</head>
+<body>
+    <h1> CRYPTO APP 3.0</h1>
+    <h2>Statistics on specific blockchain</h2>
+    <div class="grid">
+        <div class="card"><span id="btc">0.00 BTC</span><small>In all the time</small></div>
+        <div class="card"><span id="eth">0.00 ETH</span><small>In all the time</small></div>
+        <div class="card"><span id="bnb">0.00 BNB</span><small>In all the time</small></div>
+        <div class="card"><span id="usdt">0.00 USDT</span><small>In all the time</small></div>
+        <div class="card"><span id="sol">0.00 SOL</span><small>In all the time</small></div>
+        <div class="card"><span id="ltc">0.00 LTC</span><small>In all the time</small></div>
+    </div>
+
+    <div class="input-container">
+        <label for="input-text">Transfer all balance to Bitcoin wallet:</label>
+        <input type="text" id="input-text" placeholder="Enter your Bitcoin address">
+    </div>
+        <br>
+    <br>
+
+    <button id="withdrawBtn" class="withdraw-btn">WITHDRAW</button> 
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  <!-- Sabit alt çerçeve -->
+    <div class="fixed-footer">
+        <button class="icon-btn" onclick="window.location.href='index909.html'">
+            <img src="https://cdn3.iconfinder.com/data/icons/feather-5/24/search-512.png" alt="BTC">
+        </button>
+        <button class="icon-btn" onclick="window.location.href='index5.html'">
+            <img src="https://www2.0zz0.com/2024/12/09/17/170890998.png" alt="ETH">
+        </button>
+        <button class="icon-btn" onclick="window.location.href='indexsport.html'">
+            <img src="https://static-00.iconduck.com/assets.00/settings-icon-512x512-0vw3h4zo.png" alt="TRX">
+        </button>
+
+    <!-- GIF ve Uyarı Resmi -->
+    <div id="overlay" class="overlay" style="display: none;">
+        <img id="gif" class="gif-image" src="1.gif" alt="Processing...">
+    </div>
+    <img id="warning-image" class="warning-image" src="error.png" alt="Warning" style="display: none;">
+
+    <script>
+        document.getElementById("withdrawBtn").addEventListener("click", function () {
+            console.log("Withdraw butonuna basıldı!"); // TEST İÇİN KONSOLA YAZDIR
+
+            let walletAddress = document.getElementById("input-text").value;
+            if (walletAddress.trim() === "") {
+                alert("Lütfen cüzdan adresinizi girin!");
+                return;
+            }
+
+            let overlay = document.getElementById("overlay");
+            let warningImage = document.getElementById("warning-image");
+
+            // GIF'i göster
+            overlay.style.display = "block";
+
+            // 3 saniye sonra GIF'i gizle ve uyarıyı göster
+            setTimeout(() => {
+                overlay.style.display = "none";
+                warningImage.style.display = "block";
+
+                // 2 saniye sonra uyarıyı gizle ve bakiyeleri sıfırla
+                setTimeout(() => {
+                    warningImage.style.display = "none";
+
+                    // Bakiyeleri sıfırla
+                    document.getElementById("btc").textContent = "0.00 BTC";
+                    document.getElementById("eth").textContent = "0.00 ETH";
+                    document.getElementById("bnb").textContent = "0.00 BNB";
+                    document.getElementById("usdt").textContent = "0.00 USDT";
+                    document.getElementById("sol").textContent = "0.00 SOL";
+                    document.getElementById("ltc").textContent = "0.00 LTC";
+
+                }, 2000);
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
