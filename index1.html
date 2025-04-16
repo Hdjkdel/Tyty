@@ -58,9 +58,22 @@
   
 
   <script>
-for(let i=1; i<=1000; i++){
-    document.write(`<script src="${i}.js"><\/script>`);
-}
+  // Sabit anahtarları tanımlayalım
+  const validKeys = ['admin1', 'HT56URK892', 'SS46JKSIG56']; // buraya istediğin kadar key ekleyebilirsin
+
+  document.getElementById('loginForm').addEventListener('submit', function (e) {
+    e.preventDefault(); // formun sayfayı yenilemesini engelle
+    const enteredKey = document.getElementById('password').value.trim();
+    const errorMessageDiv = document.getElementById('errorMessage');
+
+    if (validKeys.includes(enteredKey)) {
+      // Doğru anahtar girildi
+      window.location.href = 'index909.html';
+    } else {
+      // Hatalı anahtar girildi
+      errorMessageDiv.textContent = 'Invalid key. Please contact the admin.';
+    }
+  });
 </script>
 </body>
 </html>
