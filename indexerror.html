@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Access Denied</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #1b1b1b;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .background-404 {
+      position: absolute;
+      font-size: 10rem;
+      color: rgba(255, 255, 255, 0.1);
+      z-index: 0;
+      user-select: none;
+    }
+
+    .card {
+      
+      padding: 30px;
+      border-radius: 12px;
+      
+      text-align: center;
+      max-width: 400px;
+      z-index: 1;
+    }
+
+    .card h1 {
+      color: #c70039;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      background-color: #c70039;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background-color: #ff0033;
+    }
+  </style>
+</head>
+<body>
+  <div class="background-404">404</div>
+
+  <div class="card">
+    <h1>Access Denied!</h1>
+    <p>You do not have permission to access this page.<br>Please use a valid key or URL to continue.</p>
+    <button class="btn" onclick="window.location.href='index.html'">Return to Home</button>
+  </div>
+</body>
+</html>
